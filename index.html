@@ -542,7 +542,15 @@
           <div class="card math-card">
             <h3>CIB policy input</h3>
             <p>The skill policy uses a learned embedding instead of directly conditioning on the full state.</p>
-            <div class="equatio
+            <div class="equation">
+              \[
+              \ell \sim q_{\psi}(\ell \mid s)
+              \]
+              \[
+              \pi(a \mid s, z) \;\longrightarrow\; \pi(a \mid \ell, z)
+              \]
+            </div>
+          </div>
         </div>
 
         <div class="figure">
