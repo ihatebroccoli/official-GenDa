@@ -582,3 +582,233 @@ pi(a | s, z)  →  pi(a | ell, z)</code></pre>
               <td>0.04 ± 0.03</td>
               <td class="best">0.68 ± 0.13</td>
             </tr>
+            <tr>
+              <td>Humanoid-Numeric</td>
+              <td>MazeEasy</td>
+              <td>0.34 ± 0.40</td>
+              <td>0.19 ± 0.27</td>
+              <td class="best">0.78 ± 0.04</td>
+            </tr>
+            <tr>
+              <td>Humanoid-Numeric</td>
+              <td>MazeHard</td>
+              <td>0.01 ± 0.01</td>
+              <td>0.00 ± 0.00</td>
+              <td class="best">0.41 ± 0.20</td>
+            </tr>
+            <tr>
+              <td>Dog-Numeric</td>
+              <td>(RS, RG)</td>
+              <td>0.00 ± 0.00</td>
+              <td>0.00 ± 0.00</td>
+              <td class="best">0.53 ± 0.08</td>
+            </tr>
+            <tr>
+              <td>Fish-Numeric</td>
+              <td>(FS, RG)</td>
+              <td>0.00 ± 0.00</td>
+              <td>0.00 ± 0.00</td>
+              <td class="best">0.79 ± 0.06</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="figure">
+          <div class="placeholder-figure">
+            <strong>Quantitative comparison</strong>
+            Suggested asset: <code>assets/coverage_results.png</code><br />
+            Use the multi-panel state/task coverage plot comparing GENDA, METRA, CSF, CIC, and DIAYN.
+          </div>
+          <div class="caption">
+            GENDA improves policy state/task coverage on numeric and pixel benchmarks, including high-dimensional Dog and Fish domains.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="analysis">
+      <div class="container">
+        <h2>Analysis</h2>
+        <div class="grid">
+          <div class="card">
+            <div class="pill">Ablation</div>
+            <h3>Relabeling improves pretraining</h3>
+            <p>
+              Without relabeling, the agent fails to acquire meaningful skills efficiently. Relabeling mitigates off-policy non-stationarity and improves data efficiency.
+            </p>
+          </div>
+          <div class="card">
+            <div class="pill">Ablation</div>
+            <h3>CIB improves transfer</h3>
+            <p>
+              Without CIB, coverage can still be high, but downstream performance under shifted starts and goals degrades, showing the importance of robust policy input conditioning.
+            </p>
+          </div>
+          <div class="card">
+            <div class="pill">Robustness</div>
+            <h3>Visual distribution shifts</h3>
+            <p>
+              In Quadruped-Pixels, CIB retains more performance under unseen background changes than the variant without CIB.
+            </p>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 34px;">Visual robustness in Quadruped-Pixels</h3>
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>Background</th>
+              <th>GENDA</th>
+              <th>GENDA without CIB</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Original</td>
+              <td class="best">331 ± 75</td>
+              <td>335 ± 103</td>
+            </tr>
+            <tr>
+              <td>Unicolor</td>
+              <td class="best">268 ± 25 (81%)</td>
+              <td>137 ± 99 (41%)</td>
+            </tr>
+            <tr>
+              <td>Gradation</td>
+              <td class="best">206 ± 88 (62%)</td>
+              <td>78 ± 47 (23%)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="figure">
+          <div class="placeholder-figure">
+            <strong>Ablation and robustness figures</strong>
+            Suggested assets: <code>assets/ablation.png</code>, <code>assets/offset_trajectories.png</code>, <code>assets/cib_analysis.png</code>
+          </div>
+          <div class="caption">
+            GENDA's components are complementary: relabeling improves pretraining efficiency, while CIB improves downstream generalization and visual robustness.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="container">
+        <h2>Qualitative Videos</h2>
+        <p class="lead">
+          Add rollout videos for discovered skills, downstream goal-reaching, and robustness under shifted initial conditions or visual backgrounds. The page is ready to display local MP4 files from <code>assets/videos/</code>.
+        </p>
+
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-placeholder">
+              <div>
+                <strong>Humanoid discovered skills</strong><br />
+                assets/videos/humanoid_skills.mp4
+              </div>
+            </div>
+            <div class="caption">Diverse Humanoid skills learned without extrinsic rewards.</div>
+          </div>
+          <div class="video-card">
+            <div class="video-placeholder">
+              <div>
+                <strong>Quadruped discovered skills</strong><br />
+                assets/videos/quadruped_skills.mp4
+              </div>
+            </div>
+            <div class="caption">Quadruped skills discovered in state and pixel environments.</div>
+          </div>
+          <div class="video-card">
+            <div class="video-placeholder">
+              <div>
+                <strong>Downstream transfer</strong><br />
+                assets/videos/downstream_transfer.mp4
+              </div>
+            </div>
+            <div class="caption">Frozen skill policy with a high-level controller on downstream tasks.</div>
+          </div>
+        </div>
+
+        <p class="note" style="margin-top: 24px;">
+          To enable videos, replace each placeholder block with a <code>&lt;video&gt;</code> tag or uncomment the prepared snippet in the source. Keep videos compressed for fast GitHub Pages loading.
+        </p>
+      </div>
+    </section>
+
+    <section id="code">
+      <div class="container">
+        <h2>Code Release</h2>
+        <p class="lead">
+          The official repository provides training code, evaluation scripts, configuration files, and reproduction utilities for GENDA.
+        </p>
+
+        <div class="grid two">
+          <div class="card code-card">
+            <h3>Installation</h3>
+            <pre><code>git clone https://github.com/your-org/genda.git
+cd genda
+conda create -n genda python=3.10 -y
+conda activate genda
+pip install -r requirements.txt</code></pre>
+          </div>
+          <div class="card code-card">
+            <h3>Run pretraining</h3>
+            <pre><code>python train.py \
+  --config configs/pretrain/humanoid_numeric.yaml \
+  --seed 0</code></pre>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="card code-card">
+            <h3>Evaluate a checkpoint</h3>
+            <pre><code>python eval.py \
+  --config configs/eval/humanoid_numeric.yaml \
+  --checkpoint outputs/RUN/checkpoints/latest.pt</code></pre>
+          </div>
+          <div class="card code-card">
+            <h3>Train downstream controller</h3>
+            <pre><code>python train.py \
+  --config configs/downstream/humanoid_rs_rg.yaml \
+  --skill_checkpoint outputs/PRETRAIN_RUN/checkpoints/latest.pt \
+  --seed 0</code></pre>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 34px;">Recommended project-page assets</h3>
+        <ul class="asset-list">
+          <li><code>assets/paper.pdf</code> — camera-ready PDF.</li>
+          <li><code>assets/teaser.png</code> — one-page visual summary.</li>
+          <li><code>assets/method.png</code> — method overview figure.</li>
+          <li><code>assets/coverage_results.png</code> — Figure 3 style quantitative coverage plot.</li>
+          <li><code>assets/ablation.png</code> — component ablation plot.</li>
+          <li><code>assets/offset_trajectories.png</code> — global-context robustness trajectories.</li>
+          <li><code>assets/cib_analysis.png</code> — CIB complementary information analysis.</li>
+          <li><code>assets/videos/*.mp4</code> — qualitative rollout videos.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="bibtex">
+      <div class="container">
+        <h2>Citation</h2>
+        <p>If you find GENDA useful, please cite:</p>
+        <pre class="bibtex"><code>@inproceedings{park2026genda,
+  title     = {Learning Generalizable Skill Policy with Data-Efficient Unsupervised RL},
+  author    = {Park, Jongchan and Oh, Seungjun and Baek, Seungho and Kim, Yusung},
+  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
+  year      = {2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 GENDA authors. Built for GitHub Pages.</p>
+      <p>Before release, replace the GitHub, arXiv, author-homepage, and asset links with the final public URLs.</p>
+    </div>
+  </footer>
+</body>
+</html>
