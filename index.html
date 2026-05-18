@@ -16,6 +16,17 @@
   <meta property="og:image" content="assets/teaser.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
   <style>
     :root {
       --bg: #ffffff;
@@ -378,6 +389,24 @@
 
     .code-card pre { margin-top: 12px; }
 
+    .math-card p {
+      color: var(--muted);
+    }
+
+    .equation {
+      margin-top: 14px;
+      padding: 18px;
+      border-radius: 14px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      overflow-x: auto;
+      text-align: center;
+    }
+
+    .equation mjx-container {
+      margin: 0 !important;
+    }
+
     .asset-list {
       margin-top: 18px;
       padding-left: 20px;
@@ -501,17 +530,19 @@
         </div>
 
         <div class="grid two">
-          <div class="card code-card">
+          <div class="card math-card">
             <h3>Skill relabeling</h3>
-            <p>For a trajectory with endpoints <code>s_0</code> and <code>s_T</code>, GENDA relabels the skill using an EMA target representation.</p>
-            <pre><code>z_relab = unit(phi_tgt(s_T) - phi_tgt(s_0))</code></pre>
+            <p>For a trajectory with endpoints \(s_0\) and \(s_T\), GENDA relabels the skill using an EMA target representation.</p>
+            <div class="equation">
+              \[
+              z_{\mathrm{relab}} = \operatorname{unit}\!\left(\phi_{\mathrm{tgt}}(s_T) - \phi_{\mathrm{tgt}}(s_0)\right)
+              \]
+            </div>
           </div>
-          <div class="card code-card">
+          <div class="card math-card">
             <h3>CIB policy input</h3>
             <p>The skill policy uses a learned embedding instead of directly conditioning on the full state.</p>
-            <pre><code>ell ~ q_psi(ell | s)
-pi(a | s, z)  →  pi(a | ell, z)</code></pre>
-          </div>
+            <div class="equatio
         </div>
 
         <div class="figure">
