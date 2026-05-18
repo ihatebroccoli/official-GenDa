@@ -6,16 +6,12 @@
   <title>GENDA: Learning Generalizable Skill Policy with Data-Efficient Unsupervised RL</title>
   <meta
     name="description"
-    content="Project page for GENDA, a data-efficient unsupervised reinforcement learning framework for learning generalizable skill-conditioned policies."
+    content="GENDA is a data-efficient unsupervised reinforcement learning framework for learning generalizable skill-conditioned policies through skill relabeling and a complementary information bottleneck."
   />
   <meta name="author" content="Jongchan Park, Seungjun Oh, Seungho Baek, Yusung Kim" />
 
-  <!-- Open Graph / Twitter preview -->
   <meta property="og:title" content="GENDA" />
-  <meta
-    property="og:description"
-    content="Learning generalizable skill policies with data-efficient unsupervised RL."
-  />
+  <meta property="og:description" content="Learning generalizable skill policies with data-efficient unsupervised RL." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/teaser.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -23,52 +19,46 @@
   <style>
     :root {
       --bg: #ffffff;
-      --fg: #161616;
-      --muted: #666666;
-      --line: #e8e8e8;
-      --soft: #f7f7f8;
+      --fg: #171717;
+      --muted: #666b76;
+      --line: #e7e8ec;
+      --soft: #f7f8fb;
+      --soft-2: #eef2ff;
       --accent: #315efb;
-      --accent-dark: #2548c8;
-      --max-width: 1060px;
-      --radius: 18px;
+      --accent-dark: #2448c9;
+      --success: #0f766e;
+      --warning: #b45309;
+      --max-width: 1080px;
+      --radius: 20px;
+      --shadow: 0 18px 50px rgba(20, 33, 61, 0.08);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--fg);
       background: var(--bg);
-      line-height: 1.6;
+      line-height: 1.62;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     .container {
-      width: min(100% - 32px, var(--max-width));
+      width: min(100% - 34px, var(--max-width));
       margin: 0 auto;
     }
 
     header {
-      padding: 72px 0 36px;
+      padding: 76px 0 42px;
       text-align: center;
       background:
-        radial-gradient(circle at top left, rgba(49, 94, 251, 0.12), transparent 32%),
-        linear-gradient(180deg, #fafbff 0%, #ffffff 100%);
+        radial-gradient(circle at 20% 0%, rgba(49, 94, 251, 0.14), transparent 34%),
+        radial-gradient(circle at 80% 8%, rgba(15, 118, 110, 0.10), transparent 32%),
+        linear-gradient(180deg, #fafbff 0%, #ffffff 92%);
       border-bottom: 1px solid var(--line);
     }
 
@@ -79,7 +69,7 @@
       padding: 6px 12px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.78);
+      background: rgba(255, 255, 255, 0.82);
       color: var(--muted);
       font-size: 14px;
       margin-bottom: 22px;
@@ -87,22 +77,22 @@
 
     h1 {
       margin: 0 auto 18px;
-      max-width: 920px;
-      font-size: clamp(34px, 5vw, 58px);
+      max-width: 980px;
+      font-size: clamp(34px, 5vw, 60px);
       line-height: 1.08;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.045em;
     }
 
     .subtitle {
-      max-width: 830px;
+      max-width: 860px;
       margin: 0 auto 24px;
       color: var(--muted);
-      font-size: clamp(17px, 2.5vw, 22px);
+      font-size: clamp(17px, 2.35vw, 22px);
       line-height: 1.45;
     }
 
     .authors {
-      margin: 22px auto 8px;
+      margin: 24px auto 8px;
       font-size: 17px;
     }
 
@@ -114,7 +104,7 @@
     .affiliations {
       color: var(--muted);
       font-size: 15px;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
 
     .links {
@@ -130,11 +120,11 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 11px 16px;
+      padding: 11px 17px;
       border-radius: 999px;
       background: var(--fg);
       color: #ffffff;
-      font-weight: 650;
+      font-weight: 700;
       font-size: 15px;
       border: 1px solid var(--fg);
       text-decoration: none;
@@ -156,14 +146,14 @@
 
     .button.secondary:hover {
       background: var(--soft);
-      border-color: #d9d9d9;
+      border-color: #d9dce4;
     }
 
     nav {
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
     }
@@ -181,23 +171,21 @@
     nav a {
       color: var(--muted);
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     section {
-      padding: 58px 0;
+      padding: 60px 0;
       border-bottom: 1px solid var(--line);
     }
 
-    section:last-of-type {
-      border-bottom: none;
-    }
+    section:last-of-type { border-bottom: none; }
 
     h2 {
-      margin: 0 0 22px;
-      font-size: clamp(26px, 3vw, 36px);
-      line-height: 1.2;
-      letter-spacing: -0.025em;
+      margin: 0 0 20px;
+      font-size: clamp(26px, 3.2vw, 38px);
+      line-height: 1.18;
+      letter-spacing: -0.03em;
     }
 
     h3 {
@@ -206,23 +194,31 @@
       letter-spacing: -0.015em;
     }
 
-    p {
-      margin: 0 0 16px;
-    }
+    p { margin: 0 0 16px; }
 
     .lead {
-      max-width: 880px;
+      max-width: 900px;
       color: var(--muted);
       font-size: 18px;
     }
 
-    .teaser {
-      margin-top: 34px;
+    .note {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .teaser,
+    .figure {
+      margin-top: 30px;
       border-radius: var(--radius);
       overflow: hidden;
       border: 1px solid var(--line);
       background: var(--soft);
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
+      box-shadow: var(--shadow);
     }
 
     .teaser img,
@@ -230,6 +226,23 @@
       display: block;
       width: 100%;
       height: auto;
+    }
+
+    .placeholder-figure {
+      padding: 40px 22px;
+      text-align: center;
+      color: var(--muted);
+      background:
+        linear-gradient(135deg, rgba(49, 94, 251, 0.09), transparent 44%),
+        linear-gradient(315deg, rgba(15, 118, 110, 0.08), transparent 44%),
+        #fafbff;
+    }
+
+    .placeholder-figure strong {
+      display: block;
+      color: var(--fg);
+      font-size: 20px;
+      margin-bottom: 6px;
     }
 
     .caption {
@@ -247,16 +260,14 @@
       margin-top: 26px;
     }
 
-    .grid.two {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
 
     .card {
-      padding: 22px;
+      padding: 23px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: #ffffff;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.035);
+      box-shadow: 0 8px 26px rgba(20, 33, 61, 0.04);
     }
 
     .card p {
@@ -270,19 +281,47 @@
       padding: 4px 9px;
       margin-bottom: 12px;
       border-radius: 999px;
-      background: #eef2ff;
+      background: var(--soft-2);
       color: var(--accent-dark);
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
-    .figure {
-      margin-top: 26px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--soft);
-      overflow: hidden;
+    .pill.green {
+      background: #ecfdf5;
+      color: var(--success);
     }
+
+    .pill.orange {
+      background: #fff7ed;
+      color: var(--warning);
+    }
+
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 22px;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      font-size: 15px;
+    }
+
+    .results-table th,
+    .results-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .results-table th {
+      background: var(--soft);
+      font-weight: 800;
+    }
+
+    .results-table tr:last-child td { border-bottom: none; }
+    .best { font-weight: 800; color: var(--success); }
 
     .video-grid {
       display: grid;
@@ -305,13 +344,25 @@
       background: #ffffff;
     }
 
+    .video-placeholder {
+      display: grid;
+      place-items: center;
+      min-height: 170px;
+      border-radius: 14px;
+      background: #111827;
+      color: #f9fafb;
+      text-align: center;
+      padding: 18px;
+      font-size: 14px;
+    }
+
     .video-card .caption {
       padding: 10px 4px 2px;
       border: none;
     }
 
     pre {
-      margin: 22px 0 0;
+      margin: 18px 0 0;
       padding: 18px;
       overflow-x: auto;
       border-radius: 14px;
@@ -325,35 +376,15 @@
       font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     }
 
-    .results-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 22px;
-      overflow: hidden;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      font-size: 15px;
-    }
+    .code-card pre { margin-top: 12px; }
 
-    .results-table th,
-    .results-table td {
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
-    }
-
-    .results-table th {
-      background: var(--soft);
-      font-weight: 700;
-    }
-
-    .results-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .bibtex {
+    .asset-list {
       margin-top: 18px;
+      padding-left: 20px;
+      color: var(--muted);
     }
+
+    .bibtex { margin-top: 18px; }
 
     footer {
       padding: 40px 0 60px;
@@ -363,28 +394,12 @@
       background: var(--soft);
     }
 
-    @media (max-width: 780px) {
-      header {
-        padding-top: 52px;
-      }
-
-      nav .container {
-        justify-content: flex-start;
-      }
-
-      .grid,
-      .grid.two,
-      .video-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .links {
-        align-items: stretch;
-      }
-
-      .button {
-        width: 100%;
-      }
+    @media (max-width: 820px) {
+      header { padding-top: 52px; }
+      nav .container { justify-content: flex-start; }
+      .grid, .grid.two, .video-grid { grid-template-columns: 1fr; }
+      .button { width: 100%; }
+      .results-table { display: block; overflow-x: auto; }
     }
   </style>
 </head>
@@ -394,7 +409,7 @@
       <div class="venue">ICML 2026 · Seoul, South Korea</div>
       <h1>Learning Generalizable Skill Policy with Data-Efficient Unsupervised RL</h1>
       <p class="subtitle">
-        GENDA learns reusable skill-conditioned policies with improved data efficiency and stronger generalization under distribution shifts.
+        GENDA is a unified unsupervised reinforcement learning framework that learns data-efficient and generalizable skill-conditioned policies for downstream control.
       </p>
 
       <div class="authors">
@@ -409,9 +424,9 @@
       </div>
 
       <div class="links">
-        <a class="button" href="https://arxiv.org/abs/TODO" target="_blank" rel="noreferrer">Paper</a>
-        <a class="button secondary" href="https://github.com/TODO/TODO" target="_blank" rel="noreferrer">Code</a>
-        <a class="button secondary" href="assets/paper.pdf" target="_blank" rel="noreferrer">PDF</a>
+        <a class="button" href="assets/paper.pdf" target="_blank" rel="noreferrer">Paper PDF</a>
+        <a class="button secondary" href="https://github.com/your-org/genda" target="_blank" rel="noreferrer">Code</a>
+        <a class="button secondary" href="https://arxiv.org/abs/replace-with-arxiv-id" target="_blank" rel="noreferrer">arXiv</a>
         <a class="button secondary" href="#bibtex">BibTeX</a>
         <a class="button secondary" href="#videos">Videos</a>
       </div>
@@ -420,10 +435,10 @@
 
   <nav>
     <div class="container">
-      <a href="#abstract">Abstract</a>
-      <a href="#highlights">Highlights</a>
+      <a href="#overview">Overview</a>
       <a href="#method">Method</a>
       <a href="#results">Results</a>
+      <a href="#analysis">Analysis</a>
       <a href="#videos">Videos</a>
       <a href="#code">Code</a>
       <a href="#bibtex">Citation</a>
@@ -431,40 +446,24 @@
   </nav>
 
   <main>
-    <section id="abstract">
+    <section id="overview">
       <div class="container">
-        <h2>Abstract</h2>
+        <h2>Overview</h2>
         <p class="lead">
-          Unsupervised reinforcement learning aims to pretrain scalable, skill-conditioned policies without extrinsic rewards. However, off-policy URL methods can suffer from non-stationary skill semantics and brittle generalization. GENDA addresses these limitations with skill relabeling and a Complementary Information Bottleneck, improving both data efficiency during pretraining and robustness during downstream transfer.
+          Unsupervised reinforcement learning aims to pretrain skill-conditioned policies without extrinsic rewards and reuse them for downstream tasks. GENDA targets two practical bottlenecks in off-policy URL: stale skill semantics caused by replay-buffer reuse, and brittle generalization caused by overfitting to global contextual information.
+        </p>
+        <p class="lead">
+          GENDA combines <strong>skill relabeling</strong>, which reinterprets old trajectories using the current representation, with a <strong>Complementary Information Bottleneck</strong>, which encourages the skill policy to focus on reusable ego-centric information. Across state and pixel benchmarks, GENDA improves skill coverage, downstream success, and robustness to distribution shifts.
         </p>
 
         <div class="teaser">
-          <img src="assets/teaser.png" alt="GENDA teaser figure" />
+          <div class="placeholder-figure">
+            <strong>Teaser figure</strong>
+            Suggested asset: <code>assets/teaser.png</code><br />
+            Use a compact figure showing semantic drift, skill relabeling, CIB, and downstream generalization.
+          </div>
           <div class="caption">
-            TODO: Replace with a teaser summarizing skill relabeling, CIB, and downstream generalization.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="highlights">
-      <div class="container">
-        <h2>Highlights</h2>
-        <div class="grid">
-          <div class="card">
-            <div class="pill">Data Efficiency</div>
-            <h3>Skill relabeling</h3>
-            <p>Relabels replay-buffer trajectories using the current representation to reduce stale skill semantics in off-policy training.</p>
-          </div>
-          <div class="card">
-            <div class="pill">Generalization</div>
-            <h3>Complementary bottleneck</h3>
-            <p>Uses a learned policy input embedding that discourages overfitting to global contextual information.</p>
-          </div>
-          <div class="card">
-            <div class="pill">Transfer</div>
-            <h3>Reusable skill policies</h3>
-            <p>Supports downstream hierarchical control by freezing the skill policy and training a high-level controller.</p>
+            GENDA addresses non-stationary skill semantics and brittle policy generalization in off-policy unsupervised skill discovery.
           </div>
         </div>
       </div>
@@ -472,30 +471,57 @@
 
     <section id="method">
       <div class="container">
-        <h2>Method Overview</h2>
+        <h2>Method</h2>
         <p class="lead">
-          GENDA combines off-policy skill relabeling with a complementary information bottleneck. The relabeling module improves the usefulness of replay-buffer samples, while CIB encourages the skill policy to rely on local, reusable information rather than brittle global context.
+          GENDA is designed to train a scalable skill foundation for control. It dynamically aligns replay-buffer trajectories with the evolving latent space and replaces raw policy observations with a complementary embedding for robust skill execution.
         </p>
 
-        <div class="grid two">
+        <div class="grid">
           <div class="card">
-            <h3>Skill relabeling</h3>
+            <div class="pill">Problem 1</div>
+            <h3>Semantic drift in off-policy URL</h3>
             <p>
-              Given a trajectory endpoint pair, GENDA computes a relabeled skill from the current target representation. This aligns old trajectories with the current latent interpretation.
+              In off-policy skill discovery, a trajectory collected with a rollout-time skill label may no longer match the current representation. Reusing stale pairs can inject noisy supervision and reduce data efficiency.
             </p>
           </div>
           <div class="card">
-            <h3>CIB policy input</h3>
+            <div class="pill green">Solution 1</div>
+            <h3>Skill relabeling</h3>
             <p>
-              The policy conditions on a learned embedding instead of directly using the full state, improving robustness under shifted starts, goals, or visual backgrounds.
+              GENDA computes relabeled skills from trajectory endpoints using the current target representation, turning replay-buffer samples into more consistent supervision for representation and policy learning.
+            </p>
+          </div>
+          <div class="card">
+            <div class="pill orange">Solution 2</div>
+            <h3>Complementary Information Bottleneck</h3>
+            <p>
+              CIB learns an embedding complementary to the metric-aware representation and feeds this embedding to the policy, reducing overfitting to global context such as coordinates or background cues.
             </p>
           </div>
         </div>
 
+        <div class="grid two">
+          <div class="card code-card">
+            <h3>Skill relabeling</h3>
+            <p>For a trajectory with endpoints <code>s_0</code> and <code>s_T</code>, GENDA relabels the skill using an EMA target representation.</p>
+            <pre><code>z_relab = unit(phi_tgt(s_T) - phi_tgt(s_0))</code></pre>
+          </div>
+          <div class="card code-card">
+            <h3>CIB policy input</h3>
+            <p>The skill policy uses a learned embedding instead of directly conditioning on the full state.</p>
+            <pre><code>ell ~ q_psi(ell | s)
+pi(a | s, z)  →  pi(a | ell, z)</code></pre>
+          </div>
+        </div>
+
         <div class="figure">
-          <img src="assets/method.png" alt="GENDA method overview" />
+          <div class="placeholder-figure">
+            <strong>Method overview</strong>
+            Suggested asset: <code>assets/method.png</code><br />
+            Include the relabeling pipeline, uniformity regularizer, CIB encoder, and SAC skill-policy update.
+          </div>
           <div class="caption">
-            TODO: Replace with the final method figure.
+            GENDA relabels stale replay-buffer skills and trains a CIB encoder for robust, reusable skill execution.
           </div>
         </div>
       </div>
@@ -503,140 +529,56 @@
 
     <section id="results">
       <div class="container">
-        <h2>Results</h2>
+        <h2>Main Results</h2>
         <p class="lead">
-          GENDA is evaluated on state-based and pixel-based locomotion and manipulation benchmarks. Add the main quantitative results, links to logs, and reproduced figures here.
+          GENDA is evaluated on state-based and pixel-based locomotion and manipulation domains, including Humanoid, Quadruped, Dog, Fish, and Kitchen. The main evaluation metrics are policy state coverage during unsupervised skill discovery and downstream success rate with a frozen skill policy.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="pill green">Skill discovery</div>
+            <h3>Higher coverage</h3>
+            <p>GENDA achieves stronger state or task coverage across all reported environments compared with METRA, CSF, CIC, and DIAYN.</p>
+          </div>
+          <div class="card">
+            <div class="pill green">Data efficiency</div>
+            <h3>Fewer interactions</h3>
+            <p>Skill relabeling improves off-policy sample reuse, enabling meaningful skills with substantially fewer environment interactions.</p>
+          </div>
+          <div class="card">
+            <div class="pill green">Scalability</div>
+            <h3>High-dimensional domains</h3>
+            <p>GENDA learns meaningful skills in challenging domains such as Dog-Numeric and Fish-Numeric, where prior methods struggle.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 34px;">Downstream success rates</h3>
+        <p class="lead">
+          A high-level controller is trained on top of a frozen pretrained skill policy. The table below summarizes representative downstream results from the paper.
         </p>
 
         <table class="results-table">
           <thead>
             <tr>
-              <th>Setting</th>
-              <th>Metric</th>
+              <th>Domain</th>
+              <th>Task</th>
+              <th>CSF</th>
+              <th>METRA</th>
               <th>GENDA</th>
-              <th>Best Baseline</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Humanoid-Numeric</td>
-              <td>State coverage</td>
-              <td>TODO</td>
-              <td>TODO</td>
+              <td>(FS, RG)</td>
+              <td>0.35 ± 0.34</td>
+              <td>0.52 ± 0.12</td>
+              <td class="best">0.83 ± 0.08</td>
             </tr>
             <tr>
-              <td>Quadruped-Numeric</td>
-              <td>State coverage</td>
-              <td>TODO</td>
-              <td>TODO</td>
+              <td>Humanoid-Numeric</td>
+              <td>(RS, RG)</td>
+              <td>0.08 ± 0.06</td>
+              <td>0.04 ± 0.03</td>
+              <td class="best">0.68 ± 0.13</td>
             </tr>
-            <tr>
-              <td>Humanoid downstream</td>
-              <td>Success rate</td>
-              <td>TODO</td>
-              <td>TODO</td>
-            </tr>
-            <tr>
-              <td>Quadruped-Pixels</td>
-              <td>Visual robustness</td>
-              <td>TODO</td>
-              <td>TODO</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="figure">
-          <img src="assets/results.png" alt="GENDA quantitative results" />
-          <div class="caption">
-            TODO: Replace with the main result figure from the paper.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="videos">
-      <div class="container">
-        <h2>Qualitative Videos</h2>
-        <p class="lead">
-          Add rollout videos showing discovered skills, downstream behavior, and robustness under shifted starts or visual backgrounds.
-        </p>
-
-        <div class="video-grid">
-          <div class="video-card">
-            <video controls muted loop playsinline poster="assets/video_posters/humanoid.png">
-              <source src="assets/videos/humanoid_skills.mp4" type="video/mp4" />
-            </video>
-            <div class="caption">Humanoid discovered skills</div>
-          </div>
-          <div class="video-card">
-            <video controls muted loop playsinline poster="assets/video_posters/quadruped.png">
-              <source src="assets/videos/quadruped_skills.mp4" type="video/mp4" />
-            </video>
-            <div class="caption">Quadruped discovered skills</div>
-          </div>
-          <div class="video-card">
-            <video controls muted loop playsinline poster="assets/video_posters/robustness.png">
-              <source src="assets/videos/robustness.mp4" type="video/mp4" />
-            </video>
-            <div class="caption">Generalization under distribution shift</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="code">
-      <div class="container">
-        <h2>Code Release</h2>
-        <p class="lead">
-          The official implementation includes training scripts, evaluation utilities, configuration files, and pretrained checkpoints.
-        </p>
-
-        <div class="grid two">
-          <div class="card">
-            <h3>Install</h3>
-            <pre><code>git clone https://github.com/TODO/TODO.git
-cd TODO
-conda create -n genda python=3.10 -y
-conda activate genda
-pip install -r requirements.txt</code></pre>
-          </div>
-          <div class="card">
-            <h3>Run</h3>
-            <pre><code>python train.py \
-  --config configs/pretrain/humanoid_numeric.yaml \
-  --seed 0
-
-python eval.py \
-  --config configs/eval/humanoid_numeric.yaml \
-  --checkpoint outputs/RUN/checkpoints/latest.pt</code></pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="bibtex">
-      <div class="container">
-        <h2>Citation</h2>
-        <p>If you find this work useful, please cite:</p>
-        <pre class="bibtex"><code>@inproceedings{park2026genda,
-  title     = {Learning Generalizable Skill Policy with Data-Efficient Unsupervised RL},
-  author    = {Park, Jongchan and Oh, Seungjun and Baek, Seungho and Kim, Yusung},
-  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
-  year      = {2026}
-}</code></pre>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>
-        © 2026 GENDA authors. Page template for GitHub Pages.
-      </p>
-      <p>
-        TODO: Replace all placeholder links, figures, videos, and checkpoint information before release.
-      </p>
-    </div>
-  </footer>
-</body>
-</html>
