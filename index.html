@@ -355,6 +355,41 @@
       background: #ffffff;
     }
 
+    .video-container {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+      box-shadow: 0 8px 26px rgba(20, 33, 61, 0.04);
+    }
+
+    .video-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 2px 10px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .video-tag {
+      flex: 0 0 auto;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--soft-2);
+      color: var(--accent-dark);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .video-caption {
+      margin: 10px 2px 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
     .video-placeholder {
       display: grid;
       place-items: center;
@@ -750,49 +785,87 @@
 
     <section id="videos">
       <div class="container">
-        <h2>Qualitative Videos</h2>
+        <h2>Results Videos</h2>
         <p class="lead">
-          Add rollout videos for discovered skills, downstream goal-reaching, and robustness under shifted initial conditions or visual backgrounds. The page is ready to display local MP4 files from <code>assets/videos/</code>.
+          This section shows rollout videos of GENDA executing 16 different skills across several environments. Each video visualizes a fixed set of sampled skills, highlighting the diversity and consistency of the learned skill policy.
         </p>
 
         <div class="video-grid">
           <div class="video-container">
-            <video width="100%" height="auto" controls autoplay muted playsinline>
-                <source src="assets/videos/humnum.mp4" type="video/mp4">
+            <div class="video-title">
+              <span>Humanoid-Numeric</span>
+              <span class="video-tag">State</span>
+            </div>
+            <video controls muted loop playsinline preload="metadata" aria-label="GENDA rollout video on Humanoid-Numeric with 16 skills">
+              <source src="assets/videos/humnum.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
             </video>
+            <p class="video-caption">Diverse locomotion skills discovered from numeric state observations.</p>
           </div>
+
           <div class="video-container">
-            <video width="100%" height="auto" controls autoplay muted playsinline>
-                <source src="assets/videos/quadnum.mp4" type="video/mp4">
+            <div class="video-title">
+              <span>Quadruped-Numeric</span>
+              <span class="video-tag">State</span>
+            </div>
+            <video controls muted loop playsinline preload="metadata" aria-label="GENDA rollout video on Quadruped-Numeric with 16 skills">
+              <source src="assets/videos/quadnum.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
             </video>
+            <p class="video-caption">Skill-conditioned locomotion behaviors learned in the Quadruped domain.</p>
           </div>
+
           <div class="video-container">
-            <video width="100%" height="auto" controls autoplay muted playsinline>
-                <source src="assets/videos/dognum.mp4" type="video/mp4">
+            <div class="video-title">
+              <span>Dog-Numeric</span>
+              <span class="video-tag">State</span>
+            </div>
+            <video controls muted loop playsinline preload="metadata" aria-label="GENDA rollout video on Dog-Numeric with 16 skills">
+              <source src="assets/videos/dognum.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
             </video>
+            <p class="video-caption">Meaningful skills in a high-dimensional state and action space.</p>
           </div>
+
           <div class="video-container">
-            <video width="100%" height="auto" controls autoplay muted playsinline>
-                <source src="assets/videos/fishnum.mp4" type="video/mp4">
+            <div class="video-title">
+              <span>Fish-Numeric</span>
+              <span class="video-tag">State</span>
+            </div>
+            <video controls muted loop playsinline preload="metadata" aria-label="GENDA rollout video on Fish-Numeric with 16 skills">
+              <source src="assets/videos/fishnum.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
             </video>
+            <p class="video-caption">Directional and spatially diverse skills discovered in the Fish environment.</p>
           </div>
+
           <div class="video-container">
-            <video width="100%" height="auto" controls autoplay muted playsinline>
-                <source src="assets/videos/humpix.mp4" type="video/mp4">
+            <div class="video-title">
+              <span>Humanoid-Pixels</span>
+              <span class="video-tag">Pixel</span>
+            </div>
+            <video controls muted loop playsinline preload="metadata" aria-label="GENDA rollout video on Humanoid-Pixels with 16 skills">
+              <source src="assets/videos/humpix.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
             </video>
+            <p class="video-caption">Skill discovery from pixel observations in the Humanoid domain.</p>
           </div>
+
           <div class="video-container">
-            <video width="100%" height="auto" controls autoplay muted playsinline>
-                <source src="assets/videos/quadpix.mp4" type="video/mp4">
+            <div class="video-title">
+              <span>Quadruped-Pixels</span>
+              <span class="video-tag">Pixel</span>
+            </div>
+            <video controls muted loop playsinline preload="metadata" aria-label="GENDA rollout video on Quadruped-Pixels with 16 skills">
+              <source src="assets/videos/quadpix.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
             </video>
+            <p class="video-caption">Pixel-based Quadruped skill rollouts under GENDA pretraining.</p>
           </div>
         </div>
-
-        <p class="note" style="margin-top: 24px;">
-          To enable videos, replace each placeholder block with a <code>&lt;video&gt;</code> tag or uncomment the prepared snippet in the source. Keep videos compressed for fast GitHub Pages loading.
-        </p>
       </div>
     </section>
+
 
     <section id="code">
       <div class="container">
