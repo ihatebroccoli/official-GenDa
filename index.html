@@ -538,17 +538,23 @@
             </p>
           </div>
           <div class="card">
-            <div class="pill green">Solution 1</div>
-            <h3>Skill relabeling</h3>
-            <p>
-              GENDA computes relabeled skills from trajectory endpoints using the current target representation, turning replay-buffer samples into more consistent supervision for representation and policy learning.
-            </p>
-          </div>
-          <div class="card">
           <div class="pill">Problem 2</div>
             <h3>Brittle skill generalization</h3>
             <p>
               When skill policies rely on global context, the same latent skill can behave differently under shifted initial states or visual conditions, making the learned skills hard to reuse in downstream tasks.
+            </p>
+          </div>
+          <div class="card">
+            <div class="pill green">Solution 1</div>
+            <h3>Skill relabeling</h3>
+            <p>
+              GENDA computes relabeled skills from trajectory endpoints using the current target representation, turning replay-buffer samples into more consistent supervision for representation and policy learning.
+              <p>For a trajectory with endpoints \(s_0\) and \(s_T\), GENDA relabels the skill using an EMA target representation.</p>
+              <div class="equation">
+                \[
+                z_{\mathrm{relab}} = \operatorname{unit}\!\left(\phi_{\mathrm{tgt}}(s_T) - \phi_{\mathrm{tgt}}(s_0)\right)
+                \]
+              </div>
             </p>
           </div>
           <div class="card">
@@ -557,21 +563,6 @@
             <p>
               CIB learns an embedding complementary to the metric-aware representation and feeds this embedding to the policy, reducing overfitting to global context such as coordinates or background cues.
             </p>
-          </div>
-        </div>
-
-        <div class="grid two">
-          <div class="card math-card">
-            <h3>Skill relabeling</h3>
-            <p>For a trajectory with endpoints \(s_0\) and \(s_T\), GENDA relabels the skill using an EMA target representation.</p>
-            <div class="equation">
-              \[
-              z_{\mathrm{relab}} = \operatorname{unit}\!\left(\phi_{\mathrm{tgt}}(s_T) - \phi_{\mathrm{tgt}}(s_0)\right)
-              \]
-            </div>
-          </div>
-          <div class="card math-card">
-            <h3>CIB policy input</h3>
             <p>The skill policy uses a learned embedding instead of directly conditioning on the full state.</p>
             <div class="equation">
               \[
