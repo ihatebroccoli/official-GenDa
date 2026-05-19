@@ -251,78 +251,6 @@ python eval.py \
   --checkpoint outputs/humanoid_numeric_genda_seed0/checkpoints/latest.pt
 ```
 
-## Pretrained Models
-
-Pretrained models will be released under `pretrained/`.
-
-| Environment | Checkpoint | Status |
-|---|---|---|
-| Humanoid-Numeric | TODO | TODO |
-| Quadruped-Numeric | TODO | TODO |
-| Dog-Numeric | TODO | TODO |
-| Fish-Numeric | TODO | TODO |
-| Humanoid-Pixels | TODO | TODO |
-| Quadruped-Pixels | TODO | TODO |
-
-Download all released checkpoints:
-
-```bash
-bash scripts/download_checkpoints.sh
-```
-
-## Evaluation Metrics
-
-This repository supports the following evaluation metrics:
-
-| Metric | Description |
-|---|---|
-| `state_coverage` | Number of unique coordinate bins visited by sampled skills |
-| `task_coverage` | Number of unique tasks reached in task-based environments |
-| `success_rate` | Downstream goal-reaching success rate |
-| `episode_return` | Episodic return, when applicable |
-| `video` | Rollout visualization of sampled skills |
-
-## Logging
-
-Supported logging backends:
-
-- TensorBoard
-- Weights & Biases
-- JSONL / CSV logs
-
-Launch TensorBoard:
-
-```bash
-tensorboard --logdir outputs/
-```
-
-## Troubleshooting
-
-### MuJoCo rendering error
-
-Try:
-
-```bash
-export MUJOCO_GL=egl
-```
-
-or:
-
-```bash
-export MUJOCO_GL=osmesa
-```
-
-### CUDA out of memory
-
-Reduce the batch size:
-
-```yaml
-agent:
-  batch_size: 512
-```
-
-You can also disable video logging during training.
-
 ### Results differ from the paper
 
 RL experiments can vary depending on hardware, CUDA version, simulator version, and random seeds.  
@@ -352,5 +280,5 @@ Please see [`LICENSE`](LICENSE) for details.
 For questions, please open a GitHub issue or contact:
 
 ```text
-Yusung Kim <yskim525@skku.edu>
+Jongchan Park <marin0625@skku.edu>
 ```
