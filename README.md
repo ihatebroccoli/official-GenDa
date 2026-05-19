@@ -24,7 +24,7 @@ This repository provides code for:
 ### 1. Clone this repository
 
 ```bash
-git clone https://github.com/TODO_ORG/TODO_REPO.git
+https://github.com/ihatebroccoli/official-GenDa.git
 ```
 
 ### 2. Create a conda environment
