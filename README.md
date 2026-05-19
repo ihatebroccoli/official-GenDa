@@ -77,34 +77,6 @@ export MUJOCO_GL=osmesa
 ```
 
 ## Quick Start
-
-### Pretrain a skill policy
-
-```bash
-python train.py \
-  --config configs/pretrain/humanoid_numeric.yaml \
-  --seed 0
-```
-
-### Evaluate skill coverage
-
-```bash
-python eval.py \
-  --config configs/eval/humanoid_numeric.yaml \
-  --checkpoint outputs/humanoid_numeric/seed0/checkpoints/latest.pt
-```
-
-### Train a downstream controller
-
-```bash
-python train.py \
-  --config configs/downstream/humanoid_rs_rg.yaml \
-  --skill_checkpoint outputs/humanoid_numeric/seed0/checkpoints/latest.pt \
-  --seed 0
-```
-
-## Reproducing Experiments
-
 ### Skill pretraining
 
 ```bash
