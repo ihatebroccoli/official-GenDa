@@ -767,49 +767,6 @@
       </div>
     </section>
 
-
-    <section id="code">
-      <div class="container">
-        <h2>Code Release</h2>
-        <p class="lead">
-          The official repository provides training code, evaluation scripts, configuration files, and reproduction utilities for GENDA.
-        </p>
-
-        <div class="grid two">
-          <div class="card code-card">
-            <h3>Installation</h3>
-            <pre><code>git clone https://github.com/your-org/genda.git
-cd genda
-conda create -n genda python=3.10 -y
-conda activate genda
-pip install -r requirements.txt</code></pre>
-          </div>
-          <div class="card code-card">
-            <h3>Run pretraining</h3>
-            <pre><code>python train.py \
-  --config configs/pretrain/humanoid_numeric.yaml \
-  --seed 0</code></pre>
-          </div>
-        </div>
-
-        <div class="grid two">
-          <div class="card code-card">
-            <h3>Evaluate a checkpoint</h3>
-            <pre><code>python eval.py \
-  --config configs/eval/humanoid_numeric.yaml \
-  --checkpoint outputs/RUN/checkpoints/latest.pt</code></pre>
-          </div>
-          <div class="card code-card">
-            <h3>Train downstream controller</h3>
-            <pre><code>python train.py \
-  --config configs/downstream/humanoid_rs_rg.yaml \
-  --skill_checkpoint outputs/PRETRAIN_RUN/checkpoints/latest.pt \
-  --seed 0</code></pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="bibtex">
       <div class="container">
         <h2>Citation</h2>
