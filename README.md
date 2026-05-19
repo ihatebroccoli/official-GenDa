@@ -18,14 +18,6 @@ This repository provides code for:
 - Unsupervised skill pretraining
 - Downstream evaluation with frozen skill policies
 - State-based and pixel-based benchmark environments
-- Ablation studies
-- Checkpoint evaluation and visualization
-
-## News
-
-- `[YYYY-MM-DD]` Initial code release.
-- `[YYYY-MM-DD]` Pretrained checkpoints released.
-- `[YYYY-MM-DD]` Project page released.
 
 ## Installation
 
@@ -33,7 +25,6 @@ This repository provides code for:
 
 ```bash
 git clone https://github.com/TODO_ORG/TODO_REPO.git
-cd TODO_REPO
 ```
 
 ### 2. Create a conda environment
@@ -75,25 +66,12 @@ export MUJOCO_GL=osmesa
 
 ```text
 .
-├── configs/                 # Experiment configuration files
-│   ├── pretrain/            # Unsupervised skill pretraining configs
-│   ├── downstream/          # Downstream task configs
-│   └── eval/                # Evaluation configs
-├── envs/                    # Environment wrappers and task definitions
-├── genda/                   # Main implementation
-│   ├── agents/              # SAC agents and skill-conditioned policies
-│   ├── algorithms/          # GENDA training logic
-│   ├── buffers/             # Replay buffers
-│   ├── cib/                 # Complementary Information Bottleneck modules
-│   ├── networks/            # Policy, critic, encoder, and representation networks
-│   ├── relabeling/          # Skill relabeling utilities
-│   └── utils/               # Logging, evaluation, seeding, checkpointing
-├── scripts/                 # Reproduction scripts
-├── tools/                   # Plotting and result aggregation utilities
-├── pretrained/              # Pretrained checkpoints, if released
-├── outputs/                 # Default output directory
-├── train.py                 # Training entry point
-├── eval.py                  # Evaluation entry point
+├── agent/                  # GENDA, high-level controller, and network modules
+├── envs/                   # Environment wrappers and task definitions
+├── scripts/                # Reproduction scripts
+├── main.py                 # Pretraining entry point
+├── run.py                  # Pretraining core
+├── downstream_task.py      # Downstream task implementation
 ├── requirements.txt
 └── README.md
 ```
@@ -130,125 +108,13 @@ python train.py \
 ### Skill pretraining
 
 ```bash
-bash scripts/pretrain_humanoid_numeric.sh
-bash scripts/pretrain_quadruped_numeric.sh
-bash scripts/pretrain_dog_numeric.sh
-bash scripts/pretrain_fish_numeric.sh
-bash scripts/pretrain_humanoid_pixels.sh
-bash scripts/pretrain_quadruped_pixels.sh
+.scripts/pretrain/humanoid_numeric.sh 0 0 debug    # GPU SEED LOG_NAME
 ```
 
 ### Downstream evaluation
 
 ```bash
-bash scripts/downstream_humanoid.sh
-bash scripts/downstream_quadruped.sh
-bash scripts/downstream_dog.sh
-bash scripts/downstream_fish.sh
-```
-
-### Ablations
-
-```bash
-bash scripts/ablation_without_relabeling.sh
-bash scripts/ablation_without_cib.sh
-bash scripts/ablation_beta.sh
-bash scripts/ablation_utd.sh
-```
-
-### Plot results
-
-```bash
-python tools/plot_results.py \
-  --logdir outputs/ \
-  --outdir figures/
-```
-
-## Configuration
-
-Experiments are controlled by YAML config files.
-
-Example:
-
-```yaml
-seed: 0
-run_name: humanoid_numeric_genda_seed0
-
-experiment:
-  mode: pretrain
-  total_steps: 10000000
-  eval_interval: 50000
-  save_interval: 500000
-
-env:
-  name: humanoid_numeric
-  obs_type: state
-
-agent:
-  name: genda
-  skill_dim: 2
-  batch_size: 1024
-  discount: 0.99
-  utd_ratio: 0.5
-
-relabeling:
-  enabled: true
-  use_episode_relabeling: true
-  use_c_step_relabeling: true
-  ema_tau: 0.995
-
-cib:
-  enabled: true
-  latent_dim: 64
-
-logging:
-  output_dir: outputs/
-  backend: wandb
-```
-
-Common overrides:
-
-```bash
-python train.py --config configs/pretrain/humanoid_numeric.yaml --seed 1
-python train.py --config configs/pretrain/humanoid_numeric.yaml agent.utd_ratio=0.25
-python train.py --config configs/pretrain/humanoid_numeric.yaml relabeling.enabled=false
-python train.py --config configs/pretrain/humanoid_numeric.yaml cib.enabled=false
-```
-
-## Checkpoints
-
-By default, checkpoints are saved to:
-
-```text
-outputs/<run_name>/checkpoints/
-```
-
-Example:
-
-```text
-outputs/humanoid_numeric_genda_seed0/
-├── checkpoints/
-│   ├── latest.pt
-│   └── step_1000000.pt
-├── logs/
-├── videos/
-└── metrics.jsonl
-```
-
-Resume training:
-
-```bash
-python train.py \
-  --config configs/pretrain/humanoid_numeric.yaml \
-  --resume outputs/humanoid_numeric_genda_seed0/checkpoints/latest.pt
-```
-
-Evaluate a checkpoint:
-
-```bash
-python eval.py \
-  --config configs/eval/humanoid_numeric.yaml \
-  --checkpoint outputs/humanoid_numeric_genda_seed0/checkpoints/latest.pt
+.scripts/downstream/humanoid_maze_numeric.sh 0 0 debug 50000 exp/your_path    # GPU SEED LOG_NAME DESIRED_EPOCH MODEL_PATH
 ```
 
 ### Results differ from the paper
@@ -257,17 +123,7 @@ RL experiments can vary depending on hardware, CUDA version, simulator version, 
 We recommend running multiple seeds and reporting mean and standard deviation.
 
 ## Citation
-
-If you use this codebase, please cite:
-
-```bibtex
-@inproceedings{park2026genda,
-  title     = {Learning Generalizable Skill Policy with Data-Efficient Unsupervised RL},
-  author    = {Park, Jongchan and Oh, Seungjun and Baek, Seungho and Kim, Yusung},
-  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
-  year      = {2026}
-}
-```
+TODO
 
 ## License
 
