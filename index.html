@@ -547,6 +547,8 @@
             <h3>Skill relabeling</h3>
             <p>
               GENDA computes relabeled skills from trajectory endpoints using the current target representation, turning replay-buffer samples into more consistent supervision for representation and policy learning.
+            
+              
               <p>For a trajectory with endpoints \(s_0\) and \(s_T\), GENDA relabels the skill using an EMA target representation.</p>
               <div class="equation">
                 \[
@@ -561,6 +563,8 @@
             <p>
               CIB learns an embedding complementary to the metric-aware representation and feeds this embedding to the policy, reducing overfitting to global context such as coordinates or background cues.
             </p>
+
+            
             <p>The skill policy uses a learned embedding instead of directly conditioning on the full state.</p>
             <div class="equation">
               \[
