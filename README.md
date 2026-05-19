@@ -65,15 +65,15 @@ export MUJOCO_GL=egl
 
 ## Quick Start
 ### Skill pretraining
-
 ```bash
-.scripts/pretrain/humanoid_numeric.sh 0 0 debug
+sudo chmod -R 777 scripts
+./scripts/pretrain/humanoid_numeric.sh 0 0 debug
 ```
 
 ### Downstream evaluation
 
 ```bash
-.scripts/downstream/humanoid_maze_numeric.sh 0 0 debug 50000 exp/your_path
+./scripts/downstream/humanoid_maze_numeric.sh 0 0 debug 50000 exp/your_path
 ```
 
 ### Results differ from the paper
