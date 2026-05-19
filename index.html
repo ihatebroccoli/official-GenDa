@@ -547,8 +547,8 @@
             <h3>Skill relabeling</h3>
             <p>
               GENDA computes relabeled skills from trajectory endpoints using the current target representation, turning replay-buffer samples into more consistent supervision for representation and policy learning.
-              <br>
-              <p>For a trajectory with endpoints \(s_0\) and \(s_T\), GENDA relabels the skill using an EMA target representation.</p>
+              
+              <p><br>For a trajectory with endpoints \(s_0\) and \(s_T\), GENDA relabels the skill using an EMA target representation.</p>
               <div class="equation">
                 \[
                 z_{\mathrm{relab}} = \operatorname{unit}\!\left(\phi_{\mathrm{tgt}}(s_T) - \phi_{\mathrm{tgt}}(s_0)\right)
