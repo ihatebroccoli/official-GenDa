@@ -41,20 +41,12 @@ cd official_GenDa
 bash install.sh
 ```
 
-For editable installation:
-
-```bash
-pip install -e .
-```
-
 ### 4. Environment dependencies
 
 For headless rendering, one of the following may be needed:
 
 ```bash
 export MUJOCO_GL=egl
-# or
-export MUJOCO_GL=osmesa
 ```
 
 ## Repository Structure
@@ -75,13 +67,13 @@ export MUJOCO_GL=osmesa
 ### Skill pretraining
 
 ```bash
-.scripts/pretrain/humanoid_numeric.sh 0 0 debug    # GPU SEED LOG_NAME
+.scripts/pretrain/humanoid_numeric.sh 0 0 debug
 ```
 
 ### Downstream evaluation
 
 ```bash
-.scripts/downstream/humanoid_maze_numeric.sh 0 0 debug 50000 exp/your_path    # GPU SEED LOG_NAME DESIRED_EPOCH MODEL_PATH
+.scripts/downstream/humanoid_maze_numeric.sh 0 0 debug 50000 exp/your_path
 ```
 
 ### Results differ from the paper
