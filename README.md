@@ -4,7 +4,7 @@ Official implementation for **GENDA: Learning Generalizable Skill Policy with Da
 
 <p align="center">
   <a href="TODO_PAPER_LINK"><strong>Paper</strong></a> ·
-  <a href="TODO_PROJECT_PAGE_LINK"><strong>Project Page</strong></a> ·
+  <a href="https://ihatebroccoli.github.io/official-GenDa/"><strong>Project Page</strong></a> ·
   <a href="TODO_ARXIV_LINK"><strong>arXiv</strong></a>
 </p>
 
