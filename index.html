@@ -519,17 +519,6 @@
         <p class="lead">
           GENDA combines <strong>skill relabeling</strong>, which reinterprets old trajectories using the current representation, with a <strong>Complementary Information Bottleneck</strong>, which encourages the skill policy to focus on reusable ego-centric information. Across state and pixel benchmarks, GENDA improves skill coverage, downstream success, and robustness to distribution shifts.
         </p>
-
-        <div class="teaser">
-          <div class="placeholder-figure">
-            <strong>Teaser figure</strong>
-            Suggested asset: <code>assets/teaser.png</code><br />
-            Use a compact figure showing semantic drift, skill relabeling, CIB, and downstream generalization.
-          </div>
-          <div class="caption">
-            GENDA addresses non-stationary skill semantics and brittle policy generalization in off-policy unsupervised skill discovery.
-          </div>
-        </div>
       </div>
     </section>
 
@@ -594,17 +583,6 @@
             </div>
           </div>
         </div>
-
-        <div class="figure">
-          <div class="placeholder-figure">
-            <strong>Method overview</strong>
-            Suggested asset: <code>assets/method.png</code><br />
-            Include the relabeling pipeline, uniformity regularizer, CIB encoder, and SAC skill-policy update.
-          </div>
-          <div class="caption">
-            GENDA relabels stale replay-buffer skills and trains a CIB encoder for robust, reusable skill execution.
-          </div>
-        </div>
       </div>
     </section>
 
@@ -614,16 +592,6 @@
         <p class="lead">
           GENDA is evaluated on state-based and pixel-based locomotion and manipulation domains, including Humanoid, Quadruped, Dog, Fish, and Kitchen. The main evaluation metrics are policy state coverage during unsupervised skill discovery and downstream success rate with a frozen skill policy.
         </p>
-
-        <div class="figure">
-          <div class="figure">
-            <img src="assets/main_result.png" alt="Quantitative comparison of GenDa against baselines across state and pixel benchmarks" />
-          </div>
-          <div class="caption">
-            We measure the state/task coverage of the policies. GenDa scores the best coverage across all environments. Notably, our algorithm learns meaningful skills in "Dog-Numeric" and "Fish-Numeric" where other methods fail.
-          </div>
-        </div>
-
         <div class="grid">
           <div class="card">
             <div class="pill green">Skill discovery</div>
@@ -711,73 +679,6 @@
           </div>
           <div class="caption">
             GENDA improves policy state/task coverage on numeric and pixel benchmarks, including high-dimensional Dog and Fish domains.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="analysis">
-      <div class="container">
-        <h2>Analysis</h2>
-        <div class="grid">
-          <div class="card">
-            <div class="pill">Ablation</div>
-            <h3>Relabeling improves pretraining</h3>
-            <p>
-              Without relabeling, the agent fails to acquire meaningful skills efficiently. Relabeling mitigates off-policy non-stationarity and improves data efficiency.
-            </p>
-          </div>
-          <div class="card">
-            <div class="pill">Ablation</div>
-            <h3>CIB improves transfer</h3>
-            <p>
-              Without CIB, coverage can still be high, but downstream performance under shifted starts and goals degrades, showing the importance of robust policy input conditioning.
-            </p>
-          </div>
-          <div class="card">
-            <div class="pill">Robustness</div>
-            <h3>Visual distribution shifts</h3>
-            <p>
-              In Quadruped-Pixels, CIB retains more performance under unseen background changes than the variant without CIB.
-            </p>
-          </div>
-        </div>
-
-        <h3 style="margin-top: 34px;">Visual robustness in Quadruped-Pixels</h3>
-        <table class="results-table">
-          <thead>
-            <tr>
-              <th>Background</th>
-              <th>GENDA</th>
-              <th>GENDA without CIB</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Original</td>
-              <td class="best">331 ± 75</td>
-              <td>335 ± 103</td>
-            </tr>
-            <tr>
-              <td>Unicolor</td>
-              <td class="best">268 ± 25 (81%)</td>
-              <td>137 ± 99 (41%)</td>
-            </tr>
-            <tr>
-              <td>Gradation</td>
-              <td class="best">206 ± 88 (62%)</td>
-              <td>78 ± 47 (23%)</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="figure">
-          <div class="placeholder-figure">
-            <strong>Ablation and robustness figures</strong>
-            Suggested assets: <code>assets/ablation.png</code>, <code>assets/offset_trajectories.png</code>, <code>assets/cib_analysis.png</code>
-          </div>
-          <div class="caption">
-            GENDA's components are complementary: relabeling improves pretraining efficiency, while CIB improves downstream generalization and visual robustness.
           </div>
         </div>
       </div>
@@ -906,18 +807,6 @@ pip install -r requirements.txt</code></pre>
   --seed 0</code></pre>
           </div>
         </div>
-
-        <h3 style="margin-top: 34px;">Recommended project-page assets</h3>
-        <ul class="asset-list">
-          <li><code>assets/paper.pdf</code> — camera-ready PDF.</li>
-          <li><code>assets/teaser.png</code> — one-page visual summary.</li>
-          <li><code>assets/method.png</code> — method overview figure.</li>
-          <li><code>assets/coverage_results.png</code> — Figure 3 style quantitative coverage plot.</li>
-          <li><code>assets/ablation.png</code> — component ablation plot.</li>
-          <li><code>assets/offset_trajectories.png</code> — global-context robustness trajectories.</li>
-          <li><code>assets/cib_analysis.png</code> — CIB complementary information analysis.</li>
-          <li><code>assets/videos/*.mp4</code> — qualitative rollout videos.</li>
-        </ul>
       </div>
     </section>
 
