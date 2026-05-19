@@ -37,7 +37,8 @@ conda activate genda
 ### 3. Install dependencies
 
 ```bash
-pip install -r requirements.txt
+cd official_GenDa
+bash install.sh
 ```
 
 For editable installation:
