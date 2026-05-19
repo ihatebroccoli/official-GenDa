@@ -48,12 +48,6 @@ pip install -e .
 
 ### 4. Environment dependencies
 
-Depending on the benchmark, install MuJoCo and DeepMind Control Suite dependencies.
-
-```bash
-pip install mujoco dm-control
-```
-
 For headless rendering, one of the following may be needed:
 
 ```bash
