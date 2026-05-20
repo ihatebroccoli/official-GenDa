@@ -56,6 +56,7 @@ export MUJOCO_GL=egl
 ├── agent/                  # GENDA, high-level controller, and network modules
 ├── envs/                   # Environment wrappers and task definitions
 ├── scripts/                # Reproduction scripts
+├── utils/                  # Replay, logging and utility functions
 ├── main.py                 # Pretraining entry point
 ├── run.py                  # Pretraining core
 ├── downstream_task.py      # Downstream task implementation
