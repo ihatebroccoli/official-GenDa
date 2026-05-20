@@ -66,7 +66,6 @@ export MUJOCO_GL=egl
 ## Quick Start
 ### Skill pretraining
 ```bash
-chmod -R 777 scripts
 ./scripts/pretrain/humanoid_numeric.sh 0 0 debug
 ```
 
