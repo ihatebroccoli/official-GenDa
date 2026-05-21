@@ -35,7 +35,7 @@ conda activate genda
 ```
 
 ### 3. Install dependencies
-
+!Important: sudo apt prompts are contained in install.sh.
 ```bash
 cd official_GenDa
 bash install.sh
