@@ -1,6 +1,6 @@
-# GENDA
+# GenDa
 
-Official implementation for **GENDA: Learning Generalizable Skill Policy with Data-Efficient Unsupervised RL**.
+Official implementation for **GenDa: Learning Generalizable Skill Policy with Data-Efficient Unsupervised RL**.
 
 <p align="center">
   <a href="TODO_PAPER_LINK"><strong>Paper</strong></a> ·
@@ -10,7 +10,7 @@ Official implementation for **GENDA: Learning Generalizable Skill Policy with Da
 
 ## Overview
 
-GENDA is an unsupervised reinforcement learning framework for learning **data-efficient and generalizable skill-conditioned policies**.  
+GenDa is an unsupervised reinforcement learning framework for learning **data-efficient and generalizable skill-conditioned policies**.  
 The method addresses two practical issues in off-policy skill discovery: stale skill semantics in replay buffers and brittle skill generalization under distribution shifts.
 
 This repository provides code for:
@@ -53,7 +53,7 @@ export MUJOCO_GL=egl
 
 ```text
 .
-├── agent/                  # GENDA, high-level controller, and network modules
+├── agent/                  # GenDa, high-level controller, and network modules
 ├── envs/                   # Environment wrappers and task definitions
 ├── scripts/                # Reproduction scripts
 ├── utils/                  # Replay, logging and utility functions
