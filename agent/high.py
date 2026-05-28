@@ -110,9 +110,9 @@ class HighLevelSAC:
 
         def actor_loss_fn(actor_p):
             a_pred, logp = self.actor.apply(actor_p, sg, key_pi)
-            q = self.critic.apply(critic_params, sg, a_pred).mean(axis=0)
+            q = self.critic.apply(critic_params, sg, a_pred).min(axis=0)
             loss = (alpha * logp.squeeze() - q).mean() 
-            return loss, (alpha, q.mean(), logp)
+            return loss, (alpha, q.min(), logp)
 
 
         def alpha_loss_fn(log_a, logp):
