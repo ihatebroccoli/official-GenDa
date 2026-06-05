@@ -3,9 +3,8 @@
 Official implementation for **GenDa: Learning Generalizable Skill Policy with Data-Efficient Unsupervised RL**.
 
 <p align="center">
-  <a href="TODO_PAPER_LINK"><strong>Paper</strong></a> ·
+  <a href="https://openreview.net/pdf?id=qgAKuqzYBC"><strong>Paper</strong></a> ·
   <a href="https://ihatebroccoli.github.io/official-GenDa/"><strong>Project Page</strong></a> ·
-  <a href="TODO_ARXIV_LINK"><strong>arXiv</strong></a>
 </p>
 
 ## Overview
